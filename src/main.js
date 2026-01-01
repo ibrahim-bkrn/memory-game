@@ -6,11 +6,13 @@ import App from './App.vue'
 import Menu from './components/Menu.vue'
 import GameBoard from './components/GameBoard.vue'
 import History from './components/History.vue'
+import ScoreDisplay from './components/ScoreDisplay.vue'
+import Carte from './components/Card.vue'
 
-// Création des routes
+// Création des routes  
 const routes = [
   { path: '/', component: Menu },
-  { path: '/game', component: GameBoard },
+  { path: '/game/:difficulty', component: GameBoard },
   { path: '/history', component: History }
 ]
 
