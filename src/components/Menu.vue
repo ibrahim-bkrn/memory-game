@@ -1,54 +1,90 @@
 <script setup>
-import { useRouter } from 'vue-router';
-const router = useRouter();
+  import { useRouter } from 'vue-router';
+  const router = useRouter();
 
-function startGame(difficulty) {
-  router.push(`/game/${difficulty}`);
-}
+  function startGame(difficulty) {
+    router.push(`/game/${difficulty}`);
+  }
 </script>
 
 <template>
-  <main class="page">
-    <section class="carte-panel">
-      <h1 class="titre">Memory Game</h1>
-      <p>Niveau de difficulté</p>
-      <div class="boutons-niveau">
-        <button class="bouton-niveau" @click="startGame(4)">4x4</button>
-        <button class="bouton-niveau" @click="startGame(5)">5x5</button>
-        <button class="bouton-niveau" @click="startGame(6)">6x6</button>
+  <div class="menu-container">
+    <div class="menu-content">
+      <h2>Choisissez votre niveau</h2>
+      
+      <div class="difficulty-buttons">
+        <button class="btn btn-difficulty" @click="startGame(4)">
+          <span class="difficulty-label">4×4</span>
+          <span class="difficulty-info">8 paires</span>
+        </button>
+        
+        <button class="btn btn-difficulty" @click="startGame(5)">
+          <span class="difficulty-label">5×5</span>
+          <span class="difficulty-info">12 paires</span>
+        </button>
+        
+        <button class="btn btn-difficulty" @click="startGame(6)">
+          <span class="difficulty-label">6×6</span>
+          <span class="difficulty-info">18 paires</span>
+        </button>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-
-
-  .page h1{
+  .menu-container {
     display: flex;
-    justify-content: center;
     align-items: center;
-  }
-
-  .page p {
-    padding: 20px;
-    font-size: 20px;
-    text-align: center;
-  }
-
-  .boutons-niveau {
-    display: flex;
     justify-content: center;
-    gap: 20px;
+    min-height: 100vh;
+    padding: 20px;
   }
-  .bouton-niveau {
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
+
+  .menu-content {
+    text-align: center;
+    max-width: 400px;
+  }
+
+  .menu-content h2 {
+    font-size: 28px;
+    margin-bottom: 50px;
+    color: #1a1a1a;
+    font-weight: 600;
+  }
+
+  .difficulty-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn-difficulty {
+    padding: 25px;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
     border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    transition: background-color 0.3s;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-difficulty:hover {
+    border-color: #003049;
+    background: #f5f5f5;
+  }
+
+  .difficulty-label {
+    font-size: 20px;
+    font-weight: 600;
+    color: #003049;
+  }
+
+  .difficulty-info {
+    font-size: 12px;
+    color: #666;
   }
 </style>

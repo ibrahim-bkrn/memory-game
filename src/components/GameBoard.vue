@@ -21,7 +21,8 @@
     if (difficulty.value === 4) totalPairs = 8
     else if (difficulty.value === 5) totalPairs = 12
     else if (difficulty.value === 6) totalPairs = 18
-      return matched.value.length === totalPairs
+    
+    return matched.value.length === totalPairs
     })
   const showMessage = ref(false)
   const playerPseudo = ref('')
@@ -176,51 +177,109 @@
 
 <style scoped>
   .game-container {
+  padding: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.game-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.game-header h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 12px;
+  margin-top: 30px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 5px;
+  text-align: center;
+  min-width: 320px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #003049;
+}
+
+.modal-content p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  margin: 25px 0 30px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.modal-content input:focus {
+  outline: none;
+  border-color: #003049;
+  box-shadow: 0 0 0 2px rgba(0, 48, 73, 0.1);
+}
+
+.modal-content button {
+  padding: 12px 30px;
+  background: #003049;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modal-content button:hover {
+  background: #002540;
+}
+
+@media (max-width: 768px) {
+  .game-container {
     padding: 20px;
   }
 
   .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 10px;
-    margin-top: 20px;
-  }
-
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 8px;
   }
 
   .modal-content {
-    background: white;
+    min-width: 280px;
     padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    min-width: 300px;
   }
-
-  .modal-content input {
-    width: 100%;
-    padding: 10px;
-    margin: 15px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  .modal-content button {
-    padding: 10px 20px;
-    background: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+}
 </style>
